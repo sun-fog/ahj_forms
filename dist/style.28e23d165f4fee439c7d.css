@@ -1,0 +1,87 @@
+/* Базовые стили для кнопки-триггера (для наглядности) */
+.popover-trigger {
+  background-color: #d32f2f; /* Красный цвет как на картинке */
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.popover-trigger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(211, 47, 47, 0.4);
+}
+
+.popover-trigger:active {
+  transform: translateY(0);
+}
+
+/* --- Стили самого Popover --- */
+.popover {
+  position: fixed; /* Критично: позиционирование относительно окна браузера */
+  max-width: 320px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 12px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+  display: none; /* Скрыт по умолчанию */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  
+  /* Плавное появление (опционально) */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+/* Класс, который JS добавляет для показа */
+.popover.active {
+  display: block; /* Обязательно для расчета размеров в JS */
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --- Стрелка (Треугольник) --- */
+.popover-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  /* Треугольник смотрит вниз (border-bottom цветной) */
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #cccccc; /* Цвет границы попапа */
+  
+  /* Позиционируем стрелку в самом верху блока */
+  top: -10px; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001; /* Чуть выше границы самого попапа */
+}
+
+/* --- Контент внутри Popover --- */
+.popover-header {
+  margin: 0 0 10px 0;
+  padding: 0;
+  color: #212121;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.popover-body {
+  margin: 0;
+  padding: 0;
+  color: #595959;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
